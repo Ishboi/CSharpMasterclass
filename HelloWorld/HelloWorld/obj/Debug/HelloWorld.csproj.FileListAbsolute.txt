@@ -1,0 +1,7 @@
+D:\Courses\c# masterclass\HelloWorld\HelloWorld\bin\Debug\HelloWorld.exe.config
+D:\Courses\c# masterclass\HelloWorld\HelloWorld\bin\Debug\HelloWorld.exe
+D:\Courses\c# masterclass\HelloWorld\HelloWorld\bin\Debug\HelloWorld.pdb
+D:\Courses\c# masterclass\HelloWorld\HelloWorld\obj\Debug\HelloWorld.csprojAssemblyReference.cache
+D:\Courses\c# masterclass\HelloWorld\HelloWorld\obj\Debug\HelloWorld.csproj.CoreCompileInputs.cache
+D:\Courses\c# masterclass\HelloWorld\HelloWorld\obj\Debug\HelloWorld.exe
+D:\Courses\c# masterclass\HelloWorld\HelloWorld\obj\Debug\HelloWorld.pdb
