@@ -57,6 +57,7 @@ namespace OperatorsC
             isLowerAndSunny = isLower && isSunny;
             Console.WriteLine("result of isLower && isSunny is {0}", isLowerAndSunny);
 
+            // condition1 or condition2
             isLowerAndSunny = isLower || isSunny;
             Console.WriteLine("result of isLower || isSunny is {0}", isLowerAndSunny);
 
