@@ -107,11 +107,78 @@ namespace HelloWorld
             //Console.WriteLine(decimalNumber);
             //Console.WriteLine("this is the string - " + value2);
 
-            Console.WriteLine("Birthday is - {0}", birthday);
-            Console.ReadKey();
+            //Console.WriteLine("Birthday is - {0}", birthday);
+            //Console.ReadKey();
 
+            //WriteSomething();
+            //WriteSomethingSpecific("I am an argument and am called from method");
 
+            //Console.WriteLine(Add(Add(1, 2), Add(3, 4)));
+            //Console.WriteLine(Mult(150,12));
+            //Console.WriteLine(Divide(25,13));
+
+            //string friend1 = "Danny";
+            //string friend2 = "Vitorino";
+            //string friend3 = "Bruno";
+
+            //GreetFriend(friend1);
+            //GreetFriend(friend2);
+            //GreetFriend(friend3);
+
+            //int firstInput = Int32.Parse(Console.ReadLine());
+            //Console.WriteLine(" + ");
+            //int secondInput = Int32.Parse(Console.ReadLine());
+            //Console.Write(" = " + (firstInput + secondInput));
+            Calculate();
+            
+            Console.Read();
 
         }
+
+        public static void Calculate()
+        {
+            Console.WriteLine("Please enter the first number");
+            string number1Input = Console.ReadLine();
+            Console.WriteLine("Please enter the second number");
+            string number2Input = Console.ReadLine();
+
+            int num1 = int.Parse(number1Input);
+            int num2 = int.Parse(number2Input);
+
+
+            int result = num1 + num2;
+            Console.WriteLine(result);
+
+        }
+
+        //public static void GreetFriend(string friend)
+        //{
+        //    Console.WriteLine("Hi " + friend + ", my friend!");
+        //}
+
+        //public static int Add(int parameter1, int parameter2)
+        //{
+
+        //    return parameter1 + parameter2;
+        //}
+        //public static int Mult(int num1, int num2)
+        //{
+        //    return num1 * num2;
+        //}
+        //public static double Divide(double num1, double num2)
+        //{
+        //    return num1 / num2;
+        //}
+
+        //public static void WriteSomething()
+        //{
+
+        //    Console.WriteLine("I am called from a method");
+        //}
+
+        //public static void WriteSomethingSpecific(string myText)
+        //{
+        //    Console.WriteLine(myText);
+        //}
     }
 }
