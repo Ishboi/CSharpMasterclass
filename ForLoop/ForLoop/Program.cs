@@ -91,15 +91,20 @@ namespace ForLoop
 
             while(true)
             {
-                count++;
-                Console.WriteLine("Please insert grade for student number {0}", count);
-                Double.TryParse(Console.ReadLine(), out input);
-                if((input == -1) || (input < 0) || (input > 20))
+                Console.WriteLine("Please insert grade for student number {0}", (count+1));
+                bool success = Double.TryParse(Console.ReadLine(), out input);
+                if(success)
                 {
-                    Console.WriteLine("Stopped execution either by will or invalid value");
-                    break;
+                    count++;
+                    if((input == -1) || (input < 0) || (input > 20))
+                    {
+                        Console.WriteLine("Stopped execution either by will or invalid value");
+                        break;
+                    }
+                    grade += input;
+                    continue;
                 }
-                grade += input;
+                Console.WriteLine("Please insert a valid value that goes from 0 to 20");
             }
             Console.WriteLine("Grade total: {2}\n Average for class with {0} students, is {1:0.00}", count, (grade / count), grade);
 
