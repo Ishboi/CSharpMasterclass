@@ -12,13 +12,14 @@ namespace ForLoop
         {
 
 
-            for(int counter = 1; counter < 50; counter++)
-            {
-                if(counter % 2 > 0)
-                {
-                    Console.WriteLine(counter + " is odd");
-                }
-            }
+            //for(int counter = 1; counter < 50; counter++)
+            //{
+            //    if(counter % 2 > 0)
+            //    {
+            //        Console.WriteLine(counter + " is odd");
+            //    }
+            //}
+
             //for (int counter = 1; counter < 20; counter+=2)
             //{
             //    if(counter % 2 > 0)
@@ -29,7 +30,47 @@ namespace ForLoop
             //doWhileLoop();
             //whileLoop();
             //breakContinue();
-            average();
+            average(); // my solution
+
+            /**
+             * His weird solution
+
+            //string input = "0";
+            //int count = 0;
+            //int total = 0;
+            //int currentNumber = 0;
+            //while(input != "-1")
+            //{
+            //    Console.WriteLine("Last number was {0}", currentNumber);
+            //    Console.WriteLine("Please enter the next score");
+            //    Console.WriteLine("Current amount of entries {0}", count);
+            //    Console.WriteLine("Please enter -1 once you are ready to calculate the average");
+
+            //    input = Console.ReadLine();
+            //    if(input.Equals("-1"))
+            //    {
+            //        Console.WriteLine("--------------------------------------------------");
+            //        double average = (double)total / (double)count;
+            //        Console.WriteLine("The average score of your students is {0}", average);
+            //    }
+
+            //    if(int.TryParse(input, out currentNumber) && currentNumber > 0 && currentNumber <21)
+            //    {
+            //        total += currentNumber;
+            //    }
+            //    else
+            //    {
+            //        if(!input.Equals("-1"))
+            //        {
+            //            Console.WriteLine("Please enter a value between 1 and 20!");
+            //        }
+            //        continue;
+            //    }
+
+            //    count++;
+
+            //}
+    */
 
             Console.WriteLine("Loops are done");
             Console.Read();
