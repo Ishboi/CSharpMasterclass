@@ -9,6 +9,7 @@ namespace Properties
     class Box
     {
         // member variable
+        private string color = "white";
         private int length;
         private int height;
         //private int width;
@@ -22,6 +23,14 @@ namespace Properties
             this.length = length;
             this.height = height;
             this.Width = width;
+        }
+
+        public int Frontsurface
+        {
+            get
+            {
+                return Height * Length;
+            }
         }
 
         public int Volume {

@@ -12,6 +12,7 @@ namespace Properties
         {
             Box box = new Box(5, 4, 10);
             Console.WriteLine("volume is{0}", box.Volume);
+            Console.WriteLine("Front surface of the box is {0}", box.Frontsurface);
             
 
             box.DisplayInfo();
