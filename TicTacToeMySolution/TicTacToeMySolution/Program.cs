@@ -10,29 +10,37 @@ namespace TicTacToeMySolution
     {
         static void Main(string[] args)
         {
-            string[,] gameMatrix =
-            {
-                {"1", "2", "3" },
-                {"4", "5", "6" },
-                {"7", "8", "9" }
-            };
 
+            string[,] gameMatrix = resetGame();
             bool player1Wins = false, player2Wins = false;
             bool playerTurn = false;
+
+            displayGameEz(gameMatrix);
             while(!player1Wins || !player2Wins)
             {
                 if(!CheckGameArray(gameMatrix).Equals("noWinner"))
                 {
                     player1Wins = CheckGameArray(gameMatrix).Equals("X") ? true : player2Wins = true;
                     if (player1Wins) {
-                        Console.WriteLine("Player 1 wins");
-                        break;
+                        Console.WriteLine("Player 1 wins. Please press a key to reset.");
+                        Console.ReadKey();
+                        player1Wins = player2Wins = false;
+                        gameMatrix = resetGame();
+                        Console.Clear();
+                        displayGameEz(gameMatrix);
+                        continue;
+                        
                     }
-                    Console.WriteLine("Player 2 wins");
-                    break;
+                    Console.WriteLine("Player 2 wins. Please press a key to reset.");
+                    Console.ReadKey();
+                    player1Wins = player2Wins = false;
+                    gameMatrix = resetGame();
+                    Console.Clear();
+                    displayGameEz(gameMatrix);
+                    continue;
+                    
                 }
-                Console.Clear();
-                displayGameEz(gameMatrix);
+                //Console.Clear();
                 Console.Write("Player {0} - Choose your field: ", playerTurn ? "2" : "1");
                 string value = Console.ReadLine();
                 int valueParsed = -1;
@@ -45,17 +53,28 @@ namespace TicTacToeMySolution
                 if(success)
                 {
                     gameMatrix = returnArrayChanged(gameMatrix, valueParsed, playerTurn);
+                    playerTurn = playerTurn == false ? true : false;
                 } else if((!success))
                 {
                     Console.WriteLine("Please input a number from the ones in the chart");
                 }
-                playerTurn = playerTurn == false ? true : false;
 
             }
             
 
 
             Console.ReadKey();
+        }
+        public static string[,] resetGame()
+        {
+            string[,] gameMatrix =
+            {
+                {"1", "2", "3" },
+                {"4", "5", "6" },
+                {"7", "8", "9" }
+            };
+            return gameMatrix;
+
         }
         
         public static string[,] returnArrayChanged(string[,] gameMatrix, int value, bool player)
@@ -67,6 +86,8 @@ namespace TicTacToeMySolution
                     gameMatrix[i, j] = gameMatrix[i, j].Equals(value.ToString()) ? (player ? "O" : "X") : gameMatrix[i, j];
                 }
             }
+            Console.Clear();
+            displayGameEz(gameMatrix);
             return gameMatrix;
         }
 
@@ -79,6 +100,9 @@ namespace TicTacToeMySolution
                 gameMatrix[2, 0].Equals("X") && gameMatrix[2, 1].Equals("X") && gameMatrix[2, 2].Equals("X") ||
                 gameMatrix[0, 0].Equals("X") && gameMatrix[0, 1].Equals("X") && gameMatrix[0, 2].Equals("X") ||
                 gameMatrix[1, 0].Equals("X") && gameMatrix[1, 1].Equals("X") && gameMatrix[1, 2].Equals("X") ||
+                gameMatrix[0, 0].Equals("X") && gameMatrix[1, 0].Equals("X") && gameMatrix[2, 0].Equals("X") ||
+                gameMatrix[0, 1].Equals("X") && gameMatrix[1, 1].Equals("X") && gameMatrix[2, 1].Equals("X") ||
+                gameMatrix[0, 2].Equals("X") && gameMatrix[1, 2].Equals("X") && gameMatrix[2, 2].Equals("X") ||
                 gameMatrix[2, 2].Equals("X") && gameMatrix[1, 1].Equals("X") && gameMatrix[0, 0].Equals("X") ||
                 gameMatrix[0, 0].Equals("X") && gameMatrix[1, 1].Equals("X") && gameMatrix[2, 2].Equals("X")
                 )
