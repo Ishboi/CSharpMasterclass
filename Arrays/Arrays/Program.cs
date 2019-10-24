@@ -54,12 +54,58 @@ namespace Arrays
             //    counter++;
             //}
 
-            string[] friends = new string[5] { "Andre", "Bruno", "Danny", "Fabio", "Vitorino" };
-            
-            foreach(string friend in friends)
+            //string[] friends = new string[5] { "Andre", "Bruno", "Danny", "Fabio", "Vitorino" };
+
+            //foreach(string friend in friends)
+            //{
+            //    Console.WriteLine("Hello {0}, my man!", friend);
+            //}
+
+
+            // declare 2D array
+            string[,] matrix;
+
+            // 3D array
+
+            int[,,] threeD;
+
+            // two dimensional array
+            int[,] array2D = new int[,]
             {
-                Console.WriteLine("Hello {0}, my man!", friend);
-            }
+                {1,2,3 }, // row 0
+                {4,5,6 }, // row 1
+                {7,8,9 }  // row 2
+            };
+
+            Console.WriteLine("Central value is {0}", array2D[1, 1]);
+
+            string[,,] array3D = new string[,,]
+            {
+                {
+                    { "000", "001" },
+                    {"010", "011" },
+                    {"Hi there", "What's up" }
+                },
+                {
+                    { "100", "101"},
+                    { "110", "111"},
+                    {"Another one", "Last entry" }
+                }
+            };
+            Console.WriteLine("The value is {0}", array3D[1,2,1]);
+
+            string[,] array2DString = new string[3, 2] { 
+                { "one", "two" },
+                { "three", "four" },
+                { "five", "six" }
+            };
+
+            array2DString[1, 1] = "chicken";
+
+            int dimensions = array2DString.Rank;
+
+
+            Console.WriteLine("Value is : {0} ", dimensions);
 
 
             Console.ReadKey();
