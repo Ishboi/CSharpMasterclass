@@ -27,10 +27,9 @@ namespace EnhancedIfStatementC
             // in short:
 
             temperature += 20;
-            
             stateOfMatter = temperature > 100 ? "gas" : temperature < 0 ? "solid" : "liquid";
-            Console.WriteLine("State of matter is {0}", stateOfMatter);
 
+            Console.WriteLine("State of matter is {0}", stateOfMatter);
             Console.ReadKey();
 
 

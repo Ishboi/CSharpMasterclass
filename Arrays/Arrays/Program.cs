@@ -65,6 +65,7 @@ namespace Arrays
             // declare 2D array
             string[,] matrix;
 
+
             // 3D array
 
             int[,,] threeD;
@@ -103,6 +104,8 @@ namespace Arrays
             array2DString[1, 1] = "chicken";
 
             int dimensions = array2DString.Rank;
+
+            int[,] array2D2 = { { 1, 2 }, { 3, 4 } };
 
 
             Console.WriteLine("Value is : {0} ", dimensions);
