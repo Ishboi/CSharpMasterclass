@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace PolymorphismC
 {
-    sealed class BMW:Car
+    // a BMW is a Car
+
+    class BMW:Car
     {
         string brand = "BMW";
 
