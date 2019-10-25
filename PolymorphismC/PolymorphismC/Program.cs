@@ -33,6 +33,9 @@ namespace PolymorphismC
             Car carB = (Car)bmwM5;
             carB.ShowDetails();
 
+            M3 myM3 = new M3(260, "red", "M3Super Turbo");
+            myM3.RepairCar();
+
             Console.ReadKey();
 
         }
