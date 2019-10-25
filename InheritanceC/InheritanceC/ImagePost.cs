@@ -25,6 +25,7 @@ namespace InheritanceC
             // Property ImageUrl is a member of ImagePost, but not of Post
             this.ImageURL = imageURL;
         }
+
         public override string ToString()
         {
             return String.Format("{0} - {1} - by {2} at - {3}", this.ID, this.Title, this.SendByUsername, this.ImageURL);
