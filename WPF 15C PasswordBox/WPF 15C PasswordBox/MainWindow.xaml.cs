@@ -24,5 +24,10 @@ namespace WPF_15C_PasswordBox
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Welcome " + tbUsername.Text);
+        }
     }
 }

@@ -6,7 +6,11 @@
         xmlns:local="clr-namespace:WPF_15C_PasswordBox"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <StackPanel Margin="10">
+        <Label>Username:</Label>
+        <TextBox Name="tbUsername"></TextBox>
+        <Label>Password:</Label>
+        <PasswordBox MaxLength="8" PasswordChar="H"></PasswordBox>
+        <Button Margin="5" Content="Login" Click="Button_Click"/>
+    </StackPanel>
 </Window>
