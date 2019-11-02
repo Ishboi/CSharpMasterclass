@@ -62,7 +62,7 @@
                             <DataTrigger Binding="{Binding ElementName=cbHello, Path=IsChecked}" Value="True">
                                 <Setter Property="Text" Value="Of Course"/>
                                 <Setter Property="Foreground" Value="Green"/>
-                                <Setter Property="FontSize" Value="60"/>
+                                <Setter Property="FontSize" Value="60"/> <!-- not doing anything? -->
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>

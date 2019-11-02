@@ -48,10 +48,10 @@ namespace NullablesE
 
             Console.WriteLine("Value of num8 is {0}", num8);
 
+            // shorter: the null coalescing operator ??
             num8 = num6 ?? 8.53;
             Console.WriteLine("Value of num8 is {0}", num8);
-
-            num8 = num7 ?? 8.53;
+            num8 = num7 ?? 8.53; // if num 7 is empty assign 8.53 to num8
             Console.WriteLine("Value of num8 is {0}", num8);
 
         }

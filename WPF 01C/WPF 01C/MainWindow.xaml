@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_01C"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="First WPF" Height="450" Width="800">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="345,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="2.363,1.464" Height="19" Width="110"><Run Text="Hello World"/><LineBreak/><Run/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="345,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="2.363,1.464" Height="19" Width="110"><Run Text="Hello Fabio"/><LineBreak/><Run/></TextBlock>
 
     </Grid>
 </Window>

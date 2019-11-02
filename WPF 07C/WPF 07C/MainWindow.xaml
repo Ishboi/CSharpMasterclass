@@ -22,7 +22,7 @@
         <!-- Textbox is the target -->
         <TextBox Name="MyTextbox" Width="100" Margin="50" Text="{Binding ElementName=MySlider, Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
         <!-- Slider is binding source -->
-        <Slider IsSnapToTickEnabled="True" Name="MySlider" Minimum="0" Maximum="100"></Slider>
+        <Slider IsSnapToTickEnabled="True" Name="MySlider" Background="value" Minimum="0" Maximum="100"></Slider>
         
     </StackPanel>
 </Window>

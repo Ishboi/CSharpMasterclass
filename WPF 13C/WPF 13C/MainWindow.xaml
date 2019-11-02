@@ -22,7 +22,7 @@
             </WrapPanel>
         </RadioButton>
 
-        <RadioButton IsChecked="True" Margin="5" Checked="Maybe_Checked">
+        <RadioButton Name="rbMaybe" IsChecked="True" Margin="5" Checked="Maybe_Checked">
             <WrapPanel>
                 <Image Source="D:\Downloads\crawl.jpg" Width="32" Height="32"/>
                 <TextBlock Text="Maybe" Margin="5, 0, 0, 0"></TextBlock>
