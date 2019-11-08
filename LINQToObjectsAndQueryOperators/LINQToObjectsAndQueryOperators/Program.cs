@@ -15,6 +15,43 @@ namespace LINQToObjectsAndQueryOperators
 
             um.GenderStudents("male");
             um.GenderStudents("female");
+            um.SortStudentsByAge();
+            um.AllStudentsFromBeijingTech();
+            um.AllStudentsFromInput();
+
+            int[] someInts = { 30, 12, 4, 3, 12 };
+            IEnumerable<int> sortedInts = from i in someInts orderby i select i;
+            IEnumerable<int> reversedInts = sortedInts.Reverse();
+
+            foreach(int i in reversedInts)
+            {
+                Console.WriteLine(i);
+            }
+
+            IEnumerable<int> reversedSortedInts = from i in someInts orderby i descending select i;
+
+            foreach(int i in reversedSortedInts)
+            {
+                Console.WriteLine(i);
+            }
+
+
+
+
+            /*
+            // this try catch is part of his solution
+            string input = Console.ReadLine();
+            try
+            {
+                int inputAsInt = Convert.ToInt32(input);
+                um.AllStudentsFromThatUni(inputAsInt);
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine("Wrong Value");
+            }
+            */
 
             Console.ReadKey();
 
@@ -39,9 +76,10 @@ namespace LINQToObjectsAndQueryOperators
             //Let's add some Students
             students.Add(new Student { Id = 1, Name = "Carla", Gender = "female", Age = 17, UniversityId = 1 });
             students.Add(new Student { Id = 2, Name = "Toni", Gender = "male", Age = 21, UniversityId = 1 });
-            students.Add(new Student { Id = 3, Name = "Leyla", Gender = "female", Age = 19, UniversityId = 2 });
-            students.Add(new Student { Id = 4, Name = "James", Gender = "trans-gender", Age = 25, UniversityId = 2 });
-            students.Add(new Student { Id = 5, Name = "Linda", Gender = "female", Age = 22, UniversityId = 2 });
+            students.Add(new Student { Id = 3, Name = "Frank", Gender = "male", Age = 22, UniversityId = 2 });
+            students.Add(new Student { Id = 4, Name = "Leyla", Gender = "female", Age = 19, UniversityId = 2 });
+            students.Add(new Student { Id = 5, Name = "James", Gender = "trans-gender", Age = 25, UniversityId = 2 });
+            students.Add(new Student { Id = 6, Name = "Linda", Gender = "female", Age = 22, UniversityId = 2 });
 
         }
 
@@ -65,6 +103,89 @@ namespace LINQToObjectsAndQueryOperators
                 student.Print();
             }
         }
+
+        public void SortStudentsByAge()
+        {
+            var sortedStudents = from student in students orderby student.Age select student;
+
+            Console.WriteLine("Students sorted by Age:");
+            foreach(Student student in sortedStudents)
+            {
+                student.Print();
+            }
+        }
+
+        public void AllStudentsFromBeijingTech()
+        {
+            IEnumerable<Student> bjtStudents = from student in students
+                                               join university in universities
+                                               on student.UniversityId equals university.Id
+                                               where university.Name == "Beijing Tech"
+                                               select student;
+
+            Console.WriteLine("Students from Beijing Tech");
+            foreach(Student student in bjtStudents)
+            {
+                student.Print();
+            }
+
+        }
+
+        public void AllStudentsFromInput()
+        {
+            int universityId = 0;
+            IEnumerable<Student> universityStudents;
+            IEnumerable<University> universityName;
+            Console.Write("Enter the id for university > ");
+            if(Int32.TryParse(Console.ReadLine(), out universityId))
+            {
+                universityStudents = from student in students 
+                                     join university in universities 
+                                     on student.UniversityId equals university.Id 
+                                     where university.Id == universityId 
+                                     select student;
+                universityName = from university in universities
+                                 where university.Id == universityId
+                                 select university;
+            } else
+            {
+                Console.WriteLine("Please use a numeric format.");
+                AllStudentsFromInput();
+                return;
+            }
+            if(universityStudents.Count() > 0)
+            {
+                Console.WriteLine("\nStudents from {0}\n", universityName.ElementAt(0).Name);
+                foreach (Student student in universityStudents)
+                {
+                    student.Print();
+                }
+                return;
+            }
+            Console.WriteLine("Please enter a valid id number");
+            AllStudentsFromInput();
+
+        }
+
+        // His method below
+        public void AllStudentsFromThatUni(int Id)
+        {
+
+
+            IEnumerable<Student> bjtStudents = from student in students
+                                               join university in universities
+                                               on student.UniversityId equals university.Id
+                                               where university.Id == Id
+                                               select student;
+
+            Console.WriteLine("Students from that uni {0}", Id);
+            foreach (Student student in bjtStudents)
+            {
+                student.Print();
+            }
+
+        }
+
 
     }
 
