@@ -17,8 +17,10 @@ namespace LINQToObjectsAndQueryOperators
             um.GenderStudents("female");
             um.SortStudentsByAge();
             um.AllStudentsFromBeijingTech();
-            um.AllStudentsFromInput();
+            //um.AllStudentsFromInput();
+            um.StudentAndUniversityNameCollection();
 
+            /*
             int[] someInts = { 30, 12, 4, 3, 12 };
             IEnumerable<int> sortedInts = from i in someInts orderby i select i;
             IEnumerable<int> reversedInts = sortedInts.Reverse();
@@ -38,7 +40,6 @@ namespace LINQToObjectsAndQueryOperators
 
 
 
-            /*
             // this try catch is part of his solution
             string input = Console.ReadLine();
             try
@@ -185,6 +186,24 @@ namespace LINQToObjectsAndQueryOperators
             }
 
         }
+
+        public void StudentAndUniversityNameCollection()
+        {
+
+            var newCollection = from student in students
+                                join university in universities on student.UniversityId equals university.Id
+                                orderby student.Name
+                                select new { StudentName = student.Name, UniversityName = university.Name };
+
+            Console.WriteLine("New Collection: ");
+
+            foreach(var col in newCollection)
+            {
+                Console.WriteLine("Student {0} from University {1}", col.StudentName, col.UniversityName);
+            }
+
+        }
+
 
 
     }
