@@ -33,7 +33,11 @@ namespace LinqToSQL
             dataContext = new LinqToSqlDataClassesDataContext(connectionString);
 
             //InsertUniversities();
-            InsertStudents();
+            //InsertStudents();
+            //InsertLectures();
+            //InsertStudentLectureAssociations();
+            //GetUniversityOfTonie();
+            GetLecturesFromTonie();
 
         }
 
@@ -42,7 +46,7 @@ namespace LinqToSQL
             University yale = dataContext.Universities.First(un => un.Name.Equals("Yale"));
             // the above is the same as below with the lambda(=>) expression
             //"from university in dataContext.University where university == "Yale" select university"
-            University ist = dataContext.Universities.First(un => un.Name.Equals("ist"));
+            University ist = dataContext.Universities.First(un => un.Name.Equals("IST"));
 
             List<Student> students = new List<Student>();
 
@@ -54,7 +58,6 @@ namespace LinqToSQL
             dataContext.Students.InsertAllOnSubmit(students);
             dataContext.SubmitChanges();
             MainDataGrid.ItemsSource = dataContext.Students;
-
         }
 
         public void InsertUniversities()
@@ -70,6 +73,68 @@ namespace LinqToSQL
             dataContext.SubmitChanges();
 
             MainDataGrid.ItemsSource = dataContext.Universities;
+        }
+
+
+        public void InsertLectures()
+        {
+            dataContext.Lectures.InsertOnSubmit(new Lecture { Name = "Math" });
+            dataContext.Lectures.InsertOnSubmit(new Lecture { Name = "History" });
+
+            dataContext.SubmitChanges();
+
+            MainDataGrid.ItemsSource = dataContext.Lectures;
+        }
+
+        public void InsertStudentLectureAssociations()
+        {
+
+            Student Carla = dataContext.Students.First(st => st.Name.Equals("Carla"));
+            Student Tonie = dataContext.Students.First(st => st.Name.Equals("Tonie"));
+            Student Leyle = dataContext.Students.First(st => st.Name.Equals("Leyle"));
+            Student Jame = dataContext.Students.First(st => st.Name.Equals("Jame"));
+
+            Lecture Math = dataContext.Lectures.First(lec => lec.Name.Equals("Math"));
+            Lecture History  = dataContext.Lectures.First(lec => lec.Name.Equals("History"));
+
+            dataContext.StudentLectures.InsertOnSubmit(new StudentLecture { Student = Carla, Lecture = Math });
+            dataContext.StudentLectures.InsertOnSubmit(new StudentLecture { Student = Tonie, Lecture = Math });
+
+            // below is another way of inserting data on a associative table
+            StudentLecture slTonie = new StudentLecture();
+            slTonie.Student = Tonie;
+            slTonie.LectureId = History.Id;
+            dataContext.StudentLectures.InsertOnSubmit(slTonie);
+
+            dataContext.StudentLectures.InsertOnSubmit(new StudentLecture { Student = Leyle, Lecture = History });
+
+            dataContext.SubmitChanges();
+
+            MainDataGrid.ItemsSource = dataContext.StudentLectures;
+
+        }
+
+        public void GetUniversityOfTonie()
+        {
+            Student Tonie = dataContext.Students.First(st => st.Name.Equals("Tonie"));
+
+            University ToniesUniversity = Tonie.University;
+
+            List<University> universities = new List<University>();
+            universities.Add(ToniesUniversity);
+
+            MainDataGrid.ItemsSource = universities;
+        }
+
+        public void GetLecturesFromTonie()
+        {
+            Student Tonie = dataContext.Students.First(st => st.Name.Equals("Tonie"));
+
+            var ToniesLectures = from sl in Tonie.StudentLectures select sl.Lecture;
+            //"from university in dataContext.University where university == "Yale" select university"
+
+            MainDataGrid.ItemsSource = ToniesLectures;
+
         }
 
     }
