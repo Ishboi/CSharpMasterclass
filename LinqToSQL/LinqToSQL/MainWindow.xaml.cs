@@ -37,7 +37,10 @@ namespace LinqToSQL
             //InsertLectures();
             //InsertStudentLectureAssociations();
             //GetUniversityOfTonie();
-            GetLecturesFromTonie();
+            //GetLecturesFromTonie();
+            //GetAllStudentsFromYale();
+            //GetAllUniversitiesWithTransgenders();
+            GetLecturesTaughtAtIST();
 
         }
 
@@ -135,6 +138,35 @@ namespace LinqToSQL
 
             MainDataGrid.ItemsSource = ToniesLectures;
 
+        }
+
+        public void GetAllStudentsFromYale()
+        {
+            var studentsFromYale = from student in dataContext.Students
+                                   where student.University.Name == "Yale"
+                                   select student;
+
+            MainDataGrid.ItemsSource = studentsFromYale;
+        }
+
+        public void GetAllUniversitiesWithTransgenders()
+        {
+            var transgenderUniversities = from student in dataContext.Students
+                                          join university in dataContext.Universities
+                                          on student.University equals university
+                                          where student.Gender == "trans"
+                                          select university;
+            MainDataGrid.ItemsSource = transgenderUniversities;
+        }
+
+        public void GetLecturesTaughtAtIST()
+        {
+            var lecturesFromIST = from studentLecture in dataContext.StudentLectures
+                                  join student in dataContext.Students
+                                  on studentLecture.StudentId equals student.Id
+                                  where student.University.Name == "IST"
+                                  select studentLecture.Lecture;
+            MainDataGrid.ItemsSource = lecturesFromIST;
         }
 
     }
