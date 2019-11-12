@@ -40,7 +40,9 @@ namespace LinqToSQL
             //GetLecturesFromTonie();
             //GetAllStudentsFromYale();
             //GetAllUniversitiesWithTransgenders();
-            GetLecturesTaughtAtIST();
+            //GetLecturesTaughtAtIST();
+            //UpdateTonie();
+            DeleteJame();
 
         }
 
@@ -168,6 +170,36 @@ namespace LinqToSQL
                                   select studentLecture.Lecture;
             MainDataGrid.ItemsSource = lecturesFromIST;
         }
+
+        public void UpdateTonie()
+        {
+            Student Tonie = dataContext.Students.FirstOrDefault(st => st.Name == "Tonie");
+
+            Tonie.Name = "Antonio";
+
+            dataContext.SubmitChanges();
+
+            MainDataGrid.ItemsSource = dataContext.Students;
+        }
+
+        public void DeleteJame()
+        {
+            Student Jame = dataContext.Students.FirstOrDefault(st => st.Name == "Jame");
+            dataContext.Students.DeleteOnSubmit(Jame);
+            dataContext.SubmitChanges();
+
+            //MainDataGrid.ItemsSource = dataContext.Students;
+            // bellow is in case you run into an error
+            string connectionString = ConfigurationManager.ConnectionStrings["LinqToSQL.Properties.Settings.FabioCsharpDBConnectionString"].ConnectionString;
+
+            LinqToSqlDataClassesDataContext db = new LinqToSqlDataClassesDataContext(connectionString);
+
+            MainDataGrid.ItemsSource = db.Students;
+
+
+        }
+
+
 
     }
 }
